@@ -10,7 +10,7 @@ To run the dockerized app locally follow these steps
 - Build image locally using
 
 - $ docker build -t petclinic .
-- $ docker run -d -p 8080:8080 petclinic
+- $ docker run -d -p 8083:8080 petclinic
 
 
 Jenkinsfile
