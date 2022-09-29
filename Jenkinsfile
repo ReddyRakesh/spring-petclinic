@@ -5,15 +5,15 @@ pipeline {
             steps {
                 script {
              
-                    sh 'sudo docker build -t petclinic:latest .'
-                    sh 'sudo docker images'
+                    sh 'docker build -t petclinic:latest .'
+                    sh 'docker images'
                 }
             }
         }
         stage('Docker Run') {
             steps {
                 script {
-                    sh 'sudo docker run -d -p 8083:8080 petclinic'
+                    sh 'docker run -d -p 8083:8080 petclinic'
                 }
             }
         }
