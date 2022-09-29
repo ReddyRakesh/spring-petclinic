@@ -14,6 +14,6 @@ To run the dockerized app locally follow these steps
 
 
 Jenkinsfile
-1. Installed docker on the jenkins server
+1. Install docker on the jenkins server
 2. Wrote a declarative jenkinsfile
 3. Created a pipeline in the jenkins
