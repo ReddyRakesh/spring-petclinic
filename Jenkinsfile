@@ -33,7 +33,9 @@ pipeline {
             steps {
                 script {
                     sh 'docker images'
-                    sh "docker run -d -p 8084:8080 rcartifacoty.jfrog.io/petclinic-docker-local/petclinic:${BUILD_NUMBER}"
+                    sh 'docker stop petclinic'
+                    sh 'docker rm petclinic'
+                    sh "docker run -d --name petclinic -p 8083:8080 rcartifacoty.jfrog.io/petclinic-docker-local/petclinic:${BUILD_NUMBER}"
                 }
             }
         }                 
