@@ -19,6 +19,23 @@ pipeline {
                 properties: 'project-name=petclinic;status=stable'
             )
         }
-    }                 
+    }
+        stage ('Pull image from Artifactory') { // take that image and push to artifactory
+        steps {
+            rtDockerPull(
+                serverId: "jfrog",
+                image: "rcartifacoty.jfrog.io/petclinic-docker-local/petclinic:${BUILD_NUMBER}",
+                sourceRepo: 'petclinic-docker-local'
+            )
+        }
+    }
+        stage ('Run docker image') {
+            steps {
+                script {
+                    sh 'docker images'
+                    sh "docker run -d -p 8084:8080 rcartifacoty.jfrog.io/petclinic-docker-local/petclinic:${BUILD_NUMBER}"
+                }
+            }
+        }                 
     }
 }
