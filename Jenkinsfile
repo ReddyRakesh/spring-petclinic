@@ -44,25 +44,6 @@ pipeline {
                 }
             }
         }  
-         stage ('Set output resources') {
-            steps {
-                // 'jfPipelines' step will be skipped if the build is not triggered by JFrog Pipelines.
-                jfPipelines(
-                    /**
-                    * Sets the output resources to send to JFrog Pipelines.
-                    * 'pipelinesBuildInfo' is the build-info resource defined in JFrog Pipelines.
-                    */
-                    outputResources: """[
-                        {
-                            "name": "pipelinesBuildInfo",
-                            "content": {
-                                "buildName": "${env.JOB_NAME}",
-                                "buildNumber": "${env.BUILD_NUMBER}"
-                            }
-                        }
-                    ]"""
-                )
-            }
-         }   
+         
     }
 }
